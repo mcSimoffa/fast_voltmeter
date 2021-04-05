@@ -5,7 +5,11 @@
 #include "stm32f10x_dma_dihalt.h"
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <stdio.h>
+
+#define ACTIVATE_LEVEL          500
+#define SAMPLES_NUM             200
 int main()
 {
   RCC->APB2ENR |=  RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPBEN | RCC_APB2ENR_IOPCEN |RCC_APB2ENR_AFIOEN;      //GPIO A & C & AFIO
@@ -50,17 +54,35 @@ int main()
   ADC1->SQR3 = 0x00000006; //channel 6
   
   
-
+  uint16_t store_sample[SAMPLES_NUM];
+  bool storeflag = false;
+  uint16_t sample;
+  uint16_t i=0;
+  printf ("\r\n Wait....");
   while (1)
   {
     //Start conversion
-  ADC1->CR2 |= ADC_CR2_SWSTART; 
-  do
-    asm("NOP");
-  while((ADC1->SR & ADC_SR_EOC) != ADC_SR_EOC);
-  
- uint16_t aa=ADC1->DR;
- printf ("\r\n %d", aa);
-     
+    ADC1->CR2 |= ADC_CR2_SWSTART; 
+    do
+      asm("NOP");
+    while((ADC1->SR & ADC_SR_EOC) != ADC_SR_EOC);
+    
+   sample = ADC1->DR;
+   //printf ("\r\n %d", sample);
+   if (sample > ACTIVATE_LEVEL)
+     storeflag = true;
+   
+   if (storeflag)
+     store_sample[i++] = (sample-325);
+   
+   if (i==SAMPLES_NUM)
+     break;
   }
+  
+  for(uint16_t i=0;i<SAMPLES_NUM; i++)
+    printf ("\r\n %d", store_sample[i]);
+  
+  printf ("\r\n Completed");
+     
+
 }

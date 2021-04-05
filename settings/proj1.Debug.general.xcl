@@ -1,8 +1,8 @@
 "C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\bin\armPROC.dll" 
 
-"C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\bin\armJLINK.dll" 
+"C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\bin\armSTLINK.dll" 
 
-"C:\hte\projects\DopplerReader\Debug\Exe\proj1.out" 
+"C:\hte\projects\high_speed_voltmeter\Debug\Exe\proj1.out" 
 
 --plugin="C:\Program Files\IAR Systems\Embedded Workbench 9.0\arm\bin\armbat.dll" 
 

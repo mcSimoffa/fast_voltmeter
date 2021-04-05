@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "C:\hte\projects\DopplerReader\settings\proj1.Debug.general.xcl" --backend -f "C:\hte\projects\DopplerReader\settings\proj1.Debug.driver.xcl" 
+& "C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "C:\hte\projects\high_speed_voltmeter\settings\proj1.Debug.general.xcl" --backend -f "C:\hte\projects\high_speed_voltmeter\settings\proj1.Debug.driver.xcl" 
 }
 else
 {
-& "C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "C:\hte\projects\DopplerReader\settings\proj1.Debug.general.xcl" --debug_file=$debugfile --backend -f "C:\hte\projects\DopplerReader\settings\proj1.Debug.driver.xcl" 
+& "C:\Program Files\IAR Systems\Embedded Workbench 9.0\common\bin\cspybat" -f "C:\hte\projects\high_speed_voltmeter\settings\proj1.Debug.general.xcl" --debug_file=$debugfile --backend -f "C:\hte\projects\high_speed_voltmeter\settings\proj1.Debug.driver.xcl" 
 }
